@@ -7,8 +7,22 @@ using System.Threading.Tasks;
 
 namespace Common.Utils
 {
+    /// <summary>
+    /// Creater: Wai Khai Sheng
+    /// Created: 20211130
+    /// Updated: 
+    /// </summary>
     public static class FileUtil
     {
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211130
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="dirName"></param>
+        /// <param name="findName"></param>
+        /// <returns></returns>
         public static List<string> GetDirectoryByFolderName(string dirName, string findName)
         {
             var ret = new List<string>();
@@ -28,7 +42,15 @@ namespace Common.Utils
             }
             return ret;
         }
-        
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211130
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="dirName"></param>
+        /// <param name="findName"></param>
+        /// <returns></returns>
         public static List<string> GetDirectoryByFileName(string dirName, string findName)
         {
             var ret = new List<string>();

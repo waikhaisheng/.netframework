@@ -8,8 +8,22 @@ using System.Threading.Tasks;
 
 namespace Common.Helpers
 {
+    /// <summary>
+    /// Creater: Wai Khai Sheng
+    /// Created: 20211130
+    /// Updated: 
+    /// </summary>
     public static class JsonHelper
     {
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211130
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static T GetConfig<T>(string path)
         {
             T res = default;

@@ -8,10 +8,10 @@ namespace Common.Utils
 {
     /// <summary>
     /// Creater: Wai Khai Sheng
-    /// Created: 20211130
+    /// Created: 20211203
     /// Updated: 
     /// </summary>
-    public static class CollectionUtil
+    public static class CryptographyUtil
     {
     }
 }

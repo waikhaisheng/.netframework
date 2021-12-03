@@ -52,14 +52,21 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\TestDbHelper.cs" />
-    <Compile Include="Common\TestEnumHelper.cs" />
-    <Compile Include="Common\TestFileUtil.cs" />
-    <Compile Include="Common\TestJsonHelper.cs" />
-    <Compile Include="Common\TestUtils.cs" />
+    <Compile Include="Common\Caches\TestDictMemoryCache.cs" />
+    <Compile Include="Common\Helpers\TestDbHelper.cs" />
+    <Compile Include="Common\Helpers\TestEnumHelper.cs" />
+    <Compile Include="Common\Utils\TestCollectionUtil.cs" />
+    <Compile Include="Common\Utils\TestCryptographyUtil.cs" />
+    <Compile Include="Common\Utils\TestDatetimeUtil.cs" />
+    <Compile Include="Common\Utils\TestFileUtil.cs" />
+    <Compile Include="Common\Helpers\TestJsonHelper.cs" />
+    <Compile Include="Common\Helpers\TestObjectHelper.cs" />
+    <Compile Include="Common\Helpers\TestStringHelper.cs" />
+    <Compile Include="Common\Utils\TestUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\TestModels\TestEnumModel.cs" />
     <Compile Include="Common\TestModels\TestJsonHelperModel.cs" />
+    <Compile Include="Web\TestCaches\TestCache.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

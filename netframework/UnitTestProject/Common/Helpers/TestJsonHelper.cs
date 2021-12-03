@@ -7,11 +7,22 @@ using System.Text;
 using System.Threading.Tasks;
 using UnitTestProject.TestModels;
 
-namespace UnitTestProject.Common
+namespace UnitTestProject.Common.Helpers
 {
+    /// <summary>
+    /// Creater: Wai Khai Sheng
+    /// Created: 20211203
+    /// Updated: 
+    /// </summary>
     [TestClass]
     public class TestJsonHelper
     {
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211203
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
         [TestMethod]
         public void TestGetConfig()
         {

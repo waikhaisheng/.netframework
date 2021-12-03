@@ -1,17 +1,19 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Utils
+namespace UnitTestProject.Common.Utils
 {
     /// <summary>
     /// Creater: Wai Khai Sheng
-    /// Created: 20211130
+    /// Created: 20211203
     /// Updated: 
     /// </summary>
-    public static class CollectionUtil
+    [TestClass]
+    public class TestCryptographyUtil
     {
     }
 }

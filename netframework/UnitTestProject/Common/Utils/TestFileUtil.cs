@@ -6,11 +6,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnitTestProject.Common
+namespace UnitTestProject.Common.Utils
 {
+    /// <summary>
+    /// Creater: Wai Khai Sheng
+    /// Created: 20211203
+    /// Updated: 
+    /// </summary>
     [TestClass]
     public class TestFileUtil
     {
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211203
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
         [TestMethod]
         public void TestGetDirectoryByFolderName()
         {
@@ -19,11 +30,16 @@ namespace UnitTestProject.Common
             var ret = FileUtil.GetDirectoryByFolderName(path, fName);
             Assert.AreEqual(1, ret.Count);
         }
-        
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211203
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
         [TestMethod]
         public void TestGetDirectoryByFileName()
         {
-            var path = @"..\..\Common";
+            var path = @"..\..\Common\Utils";
             var fName = "TestFileUtil";
             var ret = FileUtil.GetDirectoryByFileName(path, fName);
             Assert.AreEqual(1, ret.Count);

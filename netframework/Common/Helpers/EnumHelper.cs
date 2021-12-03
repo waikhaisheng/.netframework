@@ -7,8 +7,21 @@ using System.Threading.Tasks;
 
 namespace Common.Helpers
 {
+    /// <summary>
+    /// Creater: Wai Khai Sheng
+    /// Created: 20211130
+    /// Updated: 
+    /// </summary>
     public static class EnumHelper
     {
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211130
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static String GetEnumDescription(this Enum obj)
         {
             System.Reflection.FieldInfo fieldInfo = obj.GetType().GetField(obj.ToString());
@@ -24,5 +37,6 @@ namespace Common.Helpers
             }
             return obj.ToString();
         }
+
     }
 }

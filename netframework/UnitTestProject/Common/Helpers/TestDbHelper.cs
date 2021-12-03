@@ -6,11 +6,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnitTestProject.Common
+namespace UnitTestProject.Common.Helpers
 {
+    /// <summary>
+    /// Creater: Wai Khai Sheng
+    /// Created: 20211203
+    /// Updated: 
+    /// </summary>
     [TestClass]
     public class TestDbHelper
     {
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211203
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
         [TestMethod]
         public void TestObjectOrDefaultDBNull()
         {
