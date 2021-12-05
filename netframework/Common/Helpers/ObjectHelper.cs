@@ -19,6 +19,7 @@ namespace Common.Helpers
     {
         /// <summary>
         /// Created: 20211203
+        /// UpdatedBy:
         /// Updated: 
         /// </summary>
         /// <param name="obj"></param>
@@ -29,6 +30,7 @@ namespace Common.Helpers
         }
         /// <summary>
         /// Created: 20211203
+        /// UpdatedBy:
         /// Updated: 
         /// </summary>
         /// <returns></returns>
@@ -40,6 +42,7 @@ namespace Common.Helpers
         }
         /// <summary>
         /// Created: 20211203
+        /// UpdatedBy:
         /// Updated: 
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -57,6 +60,7 @@ namespace Common.Helpers
         }
         /// <summary>
         /// Created: 20211203
+        /// UpdatedBy:
         /// Updated: 
         /// </summary>
         /// <param name="obj"></param>

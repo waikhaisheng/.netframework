@@ -12,7 +12,7 @@ namespace UnitTestProject.Common.Helpers
     /// <summary>
     /// Creater: Wai Khai Sheng
     /// Created: 20211203
-    /// Updated: 
+    /// Updated: 20211205
     /// </summary>
     [TestClass]
     public class TestEnumHelper
@@ -31,6 +31,21 @@ namespace UnitTestProject.Common.Helpers
             
             var retErrorStr = TestEnumModel.Error.GetEnumDescription();
             Assert.AreEqual("Error", retErrorStr);
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211205
+        /// UpdatedBy:
+        /// UpdatedBy:
+        /// </summary>
+        [TestMethod]
+        public void TestStringToEnum()
+        {
+            var retEnumOk = "Ok".StringToEnum<TestEnumModel>();
+            Assert.AreEqual(TestEnumModel.Ok, retEnumOk);
+            
+            var retEnum1 = "1".StringToEnum<TestEnumModel>();
+            Assert.AreEqual(TestEnumModel.Ok, retEnum1);
         }
     }
 }

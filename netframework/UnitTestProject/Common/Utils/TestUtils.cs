@@ -18,6 +18,7 @@ namespace UnitTestProject.Common.Utils
         [TestMethod]
         public void TestMethod1()
         {
+            Assert.IsTrue(true);
         }
 
     }

@@ -37,6 +37,21 @@ namespace Common.Helpers
             }
             return obj.ToString();
         }
-
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211205
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumStr"></param>
+        /// <returns></returns>
+        public static T StringToEnum<T>(this string enumStr) where T : struct
+        {
+            var cond = Enum.TryParse(enumStr, out T enumObj);
+            if (cond)
+                return enumObj;
+            throw new InvalidEnumArgumentException("enumStr");
+        }
     }
 }

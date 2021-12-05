@@ -56,6 +56,7 @@
     <Compile Include="Common\Helpers\TestDbHelper.cs" />
     <Compile Include="Common\Helpers\TestEnumHelper.cs" />
     <Compile Include="Common\Utils\TestCollectionUtil.cs" />
+    <Compile Include="Common\Utils\TestConvertUtil.cs" />
     <Compile Include="Common\Utils\TestCryptographyUtil.cs" />
     <Compile Include="Common\Utils\TestDatetimeUtil.cs" />
     <Compile Include="Common\Utils\TestFileUtil.cs" />
