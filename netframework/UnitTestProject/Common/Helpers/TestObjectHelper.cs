@@ -67,5 +67,18 @@ namespace UnitTestProject.Common.Helpers
             var ret = this.GetHashCode();
             Assert.IsTrue(ret > 0);
         }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211203
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        [TestMethod]
+        public void TestGetObjMemoryAddress()
+        {
+            var addr1 = "".GetObjMemoryAddress();
+            var addr2 = string.Empty.GetObjMemoryAddress();
+            Assert.AreEqual(addr1, addr2);
+        }
     }
 }

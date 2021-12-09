@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,20 @@ namespace Common.Helpers
         public static int GetHash(this object obj)
         {
             return obj.GetHashCode();
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211209
+        /// UpdatedBy:
+        /// Updated:
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string GetObjMemoryAddress(this object obj)
+        {
+            GCHandle gch = GCHandle.Alloc(obj, GCHandleType.Pinned);
+            IntPtr intPtr = gch.AddrOfPinnedObject();
+            return intPtr.ToString();
         }
     }
 }

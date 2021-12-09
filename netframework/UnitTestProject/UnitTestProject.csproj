@@ -59,6 +59,7 @@
     <Compile Include="Common\Utils\TestConvertUtil.cs" />
     <Compile Include="Common\Utils\TestCryptographyUtil.cs" />
     <Compile Include="Common\Utils\TestDatetimeUtil.cs" />
+    <Compile Include="Common\Utils\TestEncodingUtil.cs" />
     <Compile Include="Common\Utils\TestFileUtil.cs" />
     <Compile Include="Common\Helpers\TestJsonHelper.cs" />
     <Compile Include="Common\Helpers\TestObjectHelper.cs" />

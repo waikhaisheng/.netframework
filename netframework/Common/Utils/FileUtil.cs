@@ -74,5 +74,31 @@ namespace Common.Utils
             }
             return ret;
         }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211206
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="bytes"></param>
+        public static void WriteAllBytes(string path, byte[] bytes)
+        {
+            File.WriteAllBytes(path, bytes);
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211206
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static byte[] ReadAllBytes(string path)
+        {
+            if (!File.Exists(path))
+                throw new FileNotFoundException(path);
+            return File.ReadAllBytes(path);
+        }
     }
 }

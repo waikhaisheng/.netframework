@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caches\DictMemoryCache.cs" />
-    <Compile Include="Caches\Interfaces\IDictMemoryCache.cs" />
     <Compile Include="Helpers\DbHelper.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\JsonHelper.cs" />
@@ -55,10 +54,13 @@
     <Compile Include="Utils\CollectionUtil.cs" />
     <Compile Include="Utils\ConvertUtil.cs" />
     <Compile Include="Utils\CryptographyAes.cs" />
+    <Compile Include="Utils\CryptographyRsa.cs" />
     <Compile Include="Utils\CryptographySha256.cs" />
     <Compile Include="Utils\CryptographyUtil.cs" />
     <Compile Include="Utils\DatetimeUtil.cs" />
+    <Compile Include="Utils\EncodingUtil.cs" />
     <Compile Include="Utils\FileUtil.cs" />
+    <Compile Include="Utils\PrintUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

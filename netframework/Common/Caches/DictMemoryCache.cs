@@ -1,5 +1,4 @@
-﻿using Common.Caches.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,112 +11,83 @@ namespace Common.Caches
     /// <summary>
     /// Creater: Wai Khai Sheng
     /// Created: 20211201
-    /// Updated: 
+    /// Updated: 20211209
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="TKey"></typeparam>
-    public class DictMemoryCache<TKey, T> : IDictMemoryCache<TKey, T>
+    public class DictMemoryCache<TKey, T>
     {
-        private CancellationTokenSource _cancellationTokenSource { get; set; }
         private ConcurrentDictionary<TKey, T> cacheDict { get; set; }
         /// <summary>
         /// Creater: Wai Khai Sheng
         /// Created: 20211201
-        /// UpdatedBy:
-        /// Updated: 
+        /// UpdatedBy: Wai Khai Sheng
+        /// Updated:  20211209
         /// </summary>
         public DictMemoryCache()
         {
-            _cancellationTokenSource = new CancellationTokenSource();
             cacheDict = new ConcurrentDictionary<TKey, T>();
         }
         /// <summary>
         /// Creater: Wai Khai Sheng
         /// Created: 20211201
-        /// UpdatedBy:
-        /// Updated: 
+        /// UpdatedBy: Wai Khai Sheng
+        /// Updated:  20211209
         /// </summary>
         /// <returns></returns>
-        public async Task<ConcurrentDictionary<TKey, T>> GetAllCacheAsync()
+        public ConcurrentDictionary<TKey, T> GetAllCache()
         {
-            return await Task.Factory.StartNew(() =>
-            {
-                return cacheDict;
-            }, _cancellationTokenSource.Token);
+            return cacheDict;
         }
         /// <summary>
         /// Creater: Wai Khai Sheng
         /// Created: 20211201
-        /// UpdatedBy:
-        /// Updated: 
+        /// UpdatedBy: Wai Khai Sheng
+        /// Updated:  20211209
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public async Task<T> GetCacheAsync(TKey key)
+        public T GetCache(TKey key)
         {
-            return await Task.Factory.StartNew(() =>
-            {
-                cacheDict.TryGetValue(key, out T ret);
-                return ret;
-            }, _cancellationTokenSource.Token);
+            cacheDict.TryGetValue(key, out T ret);
+            return ret;
         }
         /// <summary>
         /// Creater: Wai Khai Sheng
         /// Created: 20211201
-        /// UpdatedBy:
-        /// Updated: 
+        /// UpdatedBy: Wai Khai Sheng
+        /// Updated:  20211209
         /// </summary>
         /// <param name="key"></param>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public async Task<T> AddOrUpdateAsync(TKey key, T obj)
+        public T AddOrUpdate(TKey key, T obj)
         {
-            return await Task.Factory.StartNew(() =>
-            {
-                return cacheDict.AddOrUpdate(key, obj, (k, v) => obj);
-            }, _cancellationTokenSource.Token);
+            return cacheDict.AddOrUpdate(key, obj, (k, v) => obj);
         }
         /// <summary>
         /// Creater: Wai Khai Sheng
         /// Created: 20211201
-        /// UpdatedBy:
-        /// Updated: 
+        /// UpdatedBy: Wai Khai Sheng
+        /// Updated:  20211209
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public async Task<T> RemovedAsync(TKey key)
+        public T Removed(TKey key)
         {
-            return await Task.Factory.StartNew(() =>
-            {
-                cacheDict.TryRemove(key, out T obj);
-                return obj;
-            }, _cancellationTokenSource.Token);
+            cacheDict.TryRemove(key, out T obj);
+            return obj;
         }
         /// <summary>
         /// Creater: Wai Khai Sheng
         /// Created: 20211201
-        /// UpdatedBy:
-        /// Updated: 
+        /// UpdatedBy: Wai Khai Sheng
+        /// Updated:  20211209
         /// </summary>
         /// <returns></returns>
-        public Task CancelTask()
+        public void ClearCache()
         {
-            _cancellationTokenSource.Cancel();
-            return Task.CompletedTask;
-        }
-        /// <summary>
-        /// Creater: Wai Khai Sheng
-        /// Created: 20211201
-        /// UpdatedBy:
-        /// Updated: 
-        /// </summary>
-        /// <returns></returns>
-        public async Task ClearCacheAsync()
-        {
-            await Task.Factory.StartNew(() =>
-            {
-                cacheDict = new ConcurrentDictionary<TKey, T>();
-            }, _cancellationTokenSource.Token);
+            cacheDict = new ConcurrentDictionary<TKey, T>();
         }
     }
 }

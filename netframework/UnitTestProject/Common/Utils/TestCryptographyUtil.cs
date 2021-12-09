@@ -98,9 +98,55 @@ namespace UnitTestProject.Common.Utils
         [TestMethod]
         public void TestHashBytes()
         {
-            var bytes = new byte[ 1 ];
+            var bytes = new byte[1];
             var ret = CryptographyUtil.HashBytes(bytes);
             Assert.IsTrue(ret.Length > 0);
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211206
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        [TestMethod]
+        public void TestRsaKeys()
+        {
+            var keys = CryptographyUtil.RsaKeys();
+            Assert.IsNotNull(keys);
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211206
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        [TestMethod]
+        public void TestRSAEncrypt()
+        {
+            var str = "test123";
+            var bytes = Encoding.ASCII.GetBytes(str);
+            var key = CryptographyUtil.RsaKeys().Item1;
+            var encry = CryptographyUtil.RSAEncrypt(bytes, key, false);
+            Assert.IsTrue(true);
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211206
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        [TestMethod]
+        public void TestRSADecrypt()
+        {
+            var str = "test123";
+            var bytes = Encoding.ASCII.GetBytes(str);
+            var keys = CryptographyUtil.RsaKeys();
+            var key = keys.Item1;
+            var pkey = keys.Item2;
+            var encry = CryptographyUtil.RSAEncrypt(bytes, key, false);
+            var decry = CryptographyUtil.RSADecrypt(encry, pkey, false);
+            var ret = Encoding.ASCII.GetString(decry);
+            Assert.AreEqual(str, ret);
         }
     }
 }

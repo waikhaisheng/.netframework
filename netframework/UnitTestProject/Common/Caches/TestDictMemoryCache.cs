@@ -26,7 +26,7 @@ namespace UnitTestProject.Common.Caches
         public void TestGetAllCacheAsync()
         {
             var cache = new DictMemoryCache<int, int>();
-            var ret = cache.GetAllCacheAsync().GetAwaiter().GetResult();
+            var ret = cache.GetAllCache();
             Assert.IsNotNull(ret);
         }
         /// <summary>
@@ -39,7 +39,7 @@ namespace UnitTestProject.Common.Caches
         public void TestGetCacheAsync()
         {
             var cache = new DictMemoryCache<int, int>();
-            var ret = cache.GetCacheAsync(0).GetAwaiter().GetResult();
+            var ret = cache.GetCache(0);
             Assert.AreEqual(0, ret);
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace UnitTestProject.Common.Caches
         public void TestAddOrUpdateAsync()
         {
             var cache = new DictMemoryCache<int, int>();
-            var ret = cache.AddOrUpdateAsync(1, 1).GetAwaiter().GetResult();
+            var ret = cache.AddOrUpdate(1, 1);
             Assert.AreEqual(1, ret);
         }
         /// <summary>
@@ -65,9 +65,9 @@ namespace UnitTestProject.Common.Caches
         public void TestRemovedAsync()
         {
             var cache = new DictMemoryCache<int, int>();
-            var add = cache.AddOrUpdateAsync(1, 1).GetAwaiter().GetResult();
+            var add = cache.AddOrUpdate(1, 1);
             Assert.AreEqual(1, add);
-            var ret = cache.RemovedAsync(1).GetAwaiter().GetResult();
+            var ret = cache.Removed(1);
             Assert.AreEqual(1, ret);
         }
         /// <summary>
@@ -80,10 +80,10 @@ namespace UnitTestProject.Common.Caches
         public void TestClearCacheAsync()
         {
             var cache = new DictMemoryCache<int, int>();
-            var add = cache.AddOrUpdateAsync(1, 1).GetAwaiter().GetResult();
+            var add = cache.AddOrUpdate(1, 1);
             Assert.AreEqual(1, add);
-            cache.ClearCacheAsync().GetAwaiter().GetResult();
-            var ret = cache.GetAllCacheAsync().GetAwaiter().GetResult();
+            cache.ClearCache();
+            var ret = cache.GetAllCache();
             Assert.AreEqual(0, ret.Count);
         }
     }

@@ -104,5 +104,44 @@ namespace Common.Utils
         {
             return CryptographySha256.HashBytes(bytes);
         }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211206
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <returns></returns>
+        public static (RSAParameters, RSAParameters) RsaKeys()
+        {
+            return CryptographyRsa.RasKeys();
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211206
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="DataToEncrypt"></param>
+        /// <param name="RSAKeyInfo"></param>
+        /// <param name="DoOAEPPadding"></param>
+        /// <returns></returns>
+        public static byte[] RSAEncrypt(this byte[] DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
+        {
+            return CryptographyRsa.RSAEncrypt(DataToEncrypt, RSAKeyInfo, DoOAEPPadding);
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211206
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="DataToDecrypt"></param>
+        /// <param name="RSAKeyInfo"></param>
+        /// <param name="DoOAEPPadding"></param>
+        /// <returns></returns>
+        public static byte[] RSADecrypt(this byte[] DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
+        {
+            return CryptographyRsa.RSADecrypt(DataToDecrypt, RSAKeyInfo, DoOAEPPadding);
+        }
     }
 }
