@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -72,6 +73,35 @@ namespace UnitTestProject.Common.Utils
             {
                 _semaphoreSlim.Release();
             }
+        }
+        [TestMethod]
+        public void TestMoveFile()
+        {
+            var path = @"..\..\Common\TestLocalFiles\TestWriteBytes.txt";
+            var toPath = @"..\..\Common\TestLocalFiles\TestWriteBytes.bat";
+            using (StreamReader sr = new StreamReader
+                    (File.Open(path, FileMode.Open)))
+            {
+                Console.WriteLine(sr.ReadLine());
+            }
+            File.Move(path, toPath);
+            File.Move(toPath, path);
+        }
+        [TestMethod]
+        public void TestStream()
+        {
+            var sb = new StringBuilder();
+            var path = @"..\..\Common\TestLocalFiles\TestWriteBytes.txt";
+            using (var fs = File.OpenRead(path))
+            {
+                var b = new byte[1024];
+                while (fs.Read(b, 0, b.Length) > 0)
+                {
+                    sb.Append(Encoding.ASCII.GetString(b));
+                }
+            }
+            var ret = sb.ToString();
+            Assert.IsNotNull(ret);
         }
     }
 }

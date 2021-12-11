@@ -74,5 +74,17 @@ namespace Common.Helpers
             }
             return sb.ToString();
         }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211211
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string ReplaceZeroWidthSpace(this string s)
+        {
+            return s.Replace("\u200B", "");
+        }
     }
 }

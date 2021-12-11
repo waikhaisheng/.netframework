@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Common.Helpers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,12 @@ namespace UnitTestProject.Common.Helpers
     public class TestStringHelper
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestReplaceZeroWidthSpace()
         {
-
+            var str = "​​";
+            Assert.IsTrue(str.Contains("\u200B"));
+            var ret = str.ReplaceZeroWidthSpace();
+            Assert.IsTrue(!ret.Contains("\u200B"));
         }
     }
 }
