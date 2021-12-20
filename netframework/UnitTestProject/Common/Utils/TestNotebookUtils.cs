@@ -67,7 +67,7 @@ namespace UnitTestProject.Common.Utils
             }
             catch (Exception ex)
             {
-                
+
             }
             finally
             {
@@ -102,6 +102,26 @@ namespace UnitTestProject.Common.Utils
             }
             var ret = sb.ToString();
             Assert.IsNotNull(ret);
+        }
+        [TestMethod]
+        public void TestYield()
+        {
+            var _listA = new List<int> { 1, 2, 3, 4, 5 };
+            foreach (var item in TestYieldListAMoreThan3(_listA))
+            {
+                System.Diagnostics.Debug.WriteLine(item);
+                Assert.IsTrue(item > 3);
+            }
+        }
+        private IEnumerable<int> TestYieldListAMoreThan3(List<int> _listA)
+        {
+            foreach (var item in _listA)
+            {
+                if (item > 3)
+                {
+                    yield return item;
+                }
+            }
         }
     }
 }

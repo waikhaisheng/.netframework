@@ -18,16 +18,16 @@ namespace WebApplication.Filters
     /// <summary>
     /// Creater: Wai Khai Sheng
     /// Created: 20211211
-    /// UpdatedBy: 
-    /// Updated: 
+    /// UpdatedBy: Wai Khai Sheng
+    /// Updated: 20211216
     /// </summary>
     public class ApiBaseActionFilter : ActionFilterAttribute, IActionFilter
     {
         /// <summary>
         /// Creater: Wai Khai Sheng
         /// Created: 20211211
-        /// UpdatedBy: 
-        /// Updated: 
+        /// UpdatedBy: Wai Khai Sheng
+        /// Updated: 20211216
         /// </summary>
         /// <param name="filterContext"></param>
         public override void OnActionExecuting(HttpActionContext filterContext)
@@ -35,14 +35,22 @@ namespace WebApplication.Filters
             if (!filterContext.ModelState.IsValid)
             {
                 var errorRes = new ResponseBase();
-                var errorStr = filterContext.ModelState.Values.First().Errors.First().ErrorMessage;
-                var errorEx = filterContext.ModelState.Values.First().Errors.First().Exception;
+                IEnumerable<string> modelStateErrors = from state in filterContext.ModelState.Values
+                                                        from error in state.Errors
+                                                        where !string.IsNullOrEmpty(error.ErrorMessage)
+                                                        select error.ErrorMessage;
+                string errorStr = JsonConvert.SerializeObject(modelStateErrors);
+                IEnumerable<string> modelStateException = from state in filterContext.ModelState.Values
+                                                       from error in state.Errors
+                                                       where null != error.Exception
+                                                          select error.Exception.Message;
+                string errorEx = JsonConvert.SerializeObject(modelStateException);
                 try
                 {
                     errorRes = JsonConvert.DeserializeObject<ResponseBase>(errorStr);
                     if (errorRes == null && errorEx != null)
                     {
-                        errorRes = new ResponseBase(ApiStatusEnum.Error, errorEx.Message);
+                        errorRes = new ResponseBase(ApiStatusEnum.Error, errorEx);
                     }
                 }
                 catch (Exception)

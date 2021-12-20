@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Common.Helpers
 {
@@ -114,6 +118,100 @@ namespace Common.Helpers
             using (var client = new WebClient())
             {
                 return client.DownloadString(url);
+            }
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 202112019
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="authority"></param>
+        /// <returns></returns>
+        public static string GetHostName(HttpContext context, bool authority = false)
+        {
+            if (context == null)
+                throw new ArgumentException("Context cannot be null.");
+            if (context.Request == null)
+                throw new ArgumentException("Request cannot be null.");
+            if (context.Request.Url == null)
+                throw new ArgumentException("Url cannot be null.");
+            if (authority)
+                return context.Request.Url.Authority;
+            return context.Request.Url.Host;
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211221
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="httpReqMsg"></param>
+        /// <param name="httpClient"></param>
+        /// <returns></returns>
+        public static HttpResponseMessage SubmmitRequest(HttpRequestMessage httpReqMsg, HttpClient httpClient)
+        {
+            return httpClient.SendAsync(httpReqMsg).Result;
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211221
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="httpReqMsg"></param>
+        /// <param name="httpClient"></param>
+        /// <param name="trackingIdHeader"></param>
+        /// <returns></returns>
+        public static HttpResponseMessage SubmmitRequest(HttpRequestMessage httpReqMsg, HttpClient httpClient, string trackingIdHeader)
+        {
+            var trackingId = Trace.CorrelationManager.ActivityId.ToString();
+            if (Trace.CorrelationManager.ActivityId == default(Guid) || Trace.CorrelationManager.ActivityId == Guid.Empty)
+                trackingId = Guid.NewGuid().ToString();
+            httpReqMsg.Headers.Add(trackingIdHeader, trackingId);
+            return httpClient.SendAsync(httpReqMsg).Result;
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211221
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="httpReqMsg"></param>
+        /// <param name="httpClient"></param>
+        /// <param name="timeOutInSecond"></param>
+        /// <returns></returns>
+        public static HttpResponseMessage SubmmitRequest(HttpRequestMessage httpReqMsg, HttpClient httpClient, int timeOutInSecond)
+        {
+            using (var cts = new CancellationTokenSource(TimeSpan.FromSeconds(timeOutInSecond)))
+            {
+                return httpClient.SendAsync(httpReqMsg, cts.Token).Result;
+            }
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211221
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <param name="httpReqMsg"></param>
+        /// <param name="httpClient"></param>
+        /// <param name="trackingIdHeader"></param>
+        /// <param name="timeOutInSecond"></param>
+        /// <returns></returns>
+        public static HttpResponseMessage SubmmitRequest(HttpRequestMessage httpReqMsg, HttpClient httpClient, 
+            string trackingIdHeader, int timeOutInSecond)
+        {
+            var trackingId = Trace.CorrelationManager.ActivityId.ToString();
+            if (Trace.CorrelationManager.ActivityId == default(Guid) || Trace.CorrelationManager.ActivityId == Guid.Empty)
+                trackingId = Guid.NewGuid().ToString();
+
+            httpReqMsg.Headers.Add(trackingIdHeader, trackingId);
+
+            using (var cts = new CancellationTokenSource(TimeSpan.FromSeconds(timeOutInSecond)))
+            {
+                return httpClient.SendAsync(httpReqMsg, cts.Token).Result;
             }
         }
     }

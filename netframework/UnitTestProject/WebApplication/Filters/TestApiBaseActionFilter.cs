@@ -22,7 +22,7 @@ namespace UnitTestProject.WebApplication.Filters
     /// <summary>
     /// Creater: Wai Khai Sheng
     /// Created: 20211211
-    /// Updated: 
+    /// Updated: 20211216
     /// </summary>
     [TestClass]
     public class TestApiBaseActionFilter
@@ -70,6 +70,36 @@ namespace UnitTestProject.WebApplication.Filters
             var modelStateKey = "key1";
             var ModelStateErrorMsg = "error key 1";
             context.ModelState.AddModelError(modelStateKey, ModelStateErrorMsg);
+
+            //Act
+            var apiBaseActionFilter = new ApiBaseActionFilter();
+            apiBaseActionFilter.OnActionExecuting(context);
+
+            //Assert
+            Assert.AreEqual(HttpStatusCode.BadRequest, context?.Response?.StatusCode);
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20211216
+        /// UpdatedBy:
+        /// Updated:
+        /// </summary>
+        [TestMethod]
+        public void TestOnActionExecuting_ModelState_ListOfMsg()
+        {
+            //Arrange
+            var context = new HttpActionContext();
+            var request = new HttpRequestMessage();
+            var httpControllerContext = new HttpControllerContext();
+            httpControllerContext.Request = request;
+            context.ControllerContext = httpControllerContext;
+            context.ControllerContext.Configuration = new HttpConfiguration();
+            for (int i = 0; i < 3; i++)
+            {
+                var modelStateKey = "key " + i.ToString();
+                var ModelStateErrorMsg = "error key " + i.ToString();
+                context.ModelState.AddModelError(modelStateKey, ModelStateErrorMsg);
+            }
 
             //Act
             var apiBaseActionFilter = new ApiBaseActionFilter();

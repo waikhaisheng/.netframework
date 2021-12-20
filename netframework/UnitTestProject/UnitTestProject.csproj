@@ -96,9 +96,11 @@
   <ItemGroup>
     <Compile Include="Common\Caches\TestDictMemoryCache.cs" />
     <Compile Include="Common\Helpers\TestActivatorHelper.cs" />
+    <Compile Include="Common\Helpers\TestCompressHelper.cs" />
     <Compile Include="Common\Helpers\TestDbHelper.cs" />
     <Compile Include="Common\Helpers\TestEnumHelper.cs" />
     <Compile Include="Common\Helpers\TestWebHelper.cs" />
+    <Compile Include="Common\TestModels\TestCompressHelperModel.cs" />
     <Compile Include="Common\Utils\TestCollectionUtil.cs" />
     <Compile Include="Common\Utils\TestConvertUtil.cs" />
     <Compile Include="Common\Utils\TestCryptographyUtil.cs" />

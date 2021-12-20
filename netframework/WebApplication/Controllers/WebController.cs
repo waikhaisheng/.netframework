@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -30,7 +31,13 @@ namespace WebApplication.Controllers
         {
             return Ok("Ok");
         }
-
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 202112019
+        /// UpdatedBy:
+        /// Updated: 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("TestGet")]
         public IHttpActionResult TestGet()
