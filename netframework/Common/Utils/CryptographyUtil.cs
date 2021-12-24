@@ -106,6 +106,18 @@ namespace Common.Utils
         }
         /// <summary>
         /// Creater: Wai Khai Sheng
+        /// Created: 20211222
+        /// UpdatedBy:
+        /// Updated:
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string HashString(this string str)
+        {
+            return CryptographySha256.HashString(str);
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
         /// Created: 20211206
         /// UpdatedBy:
         /// Updated: 

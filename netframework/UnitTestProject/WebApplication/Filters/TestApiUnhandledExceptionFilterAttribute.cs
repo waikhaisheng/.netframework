@@ -12,8 +12,8 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using WebApplication.Filters;
-using WebApplication.Models.CommonModels;
-using WebApplication.Models.Enums;
+using Models.CommonModels;
+using Models.Enums;
 
 namespace UnitTestProject.WebApplication.Filters
 {

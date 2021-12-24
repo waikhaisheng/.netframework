@@ -15,8 +15,8 @@ using System.Web.Http.Results;
 using System.Web.Http.Routing;
 using WebApplication;
 using WebApplication.Controllers;
-using WebApplication.Models.Enums;
-using WebApplication.Models.ValueModels;
+using Models.Enums;
+using Models.WebApplication.Controllers.ValuesModels;
 
 namespace UnitTestProject.WebApplication.Controllers
 {

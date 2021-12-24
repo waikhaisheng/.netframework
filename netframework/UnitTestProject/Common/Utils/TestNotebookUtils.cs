@@ -67,7 +67,7 @@ namespace UnitTestProject.Common.Utils
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             finally
             {

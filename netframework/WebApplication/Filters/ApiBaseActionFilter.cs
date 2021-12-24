@@ -10,8 +10,8 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
-using WebApplication.Models.CommonModels;
-using WebApplication.Models.Enums;
+using Models.CommonModels;
+using Models.Enums;
 
 namespace WebApplication.Filters
 {

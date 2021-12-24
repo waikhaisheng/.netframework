@@ -1,34 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace WebApplication.Models.Enums
+namespace Database.Common
 {
     /// <summary>
     /// Creater: Wai Khai Sheng
-    /// Created: 20211210
+    /// Created: 20211222
     /// UpdatedBy:
     /// Updated:
     /// </summary>
-    public enum ApiStatusEnum
+    public class DbContext
     {
         /// <summary>
         /// Creater: Wai Khai Sheng
-        /// Created: 20211210
+        /// Created: 20211222
         /// UpdatedBy:
         /// Updated:
         /// </summary>
-        [Description("Ok")]
-        OK = 200,
+        protected string _dbConnectString;
         /// <summary>
         /// Creater: Wai Khai Sheng
-        /// Created: 20211210
+        /// Created: 20211222
         /// UpdatedBy:
         /// Updated:
         /// </summary>
-        [Description("Error")]
-        Error = 400
+        /// <param name="dbConnectionString"></param>
+        public DbContext(string dbConnectionString)
+        {
+            _dbConnectString = dbConnectionString;
+        }
     }
 }

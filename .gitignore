@@ -9,3 +9,11 @@ netframework/.vs/netframework/v16/
 netframework/UnitTestProject/Common/TestLocalFiles/
 netframework/WebApplication/bin/
 netframework/WebApplication/obj/
+netframework/Models/obj/
+netframework/Database/bin/
+netframework/Database/obj/
+netframework/Models/bin/
+netframework/Services/bin/
+netframework/Services/obj/
+netframework/UnitTestCleanup/obj/
+netframework/UnitTestCleanup/bin/

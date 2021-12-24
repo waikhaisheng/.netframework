@@ -1,25 +1,26 @@
-﻿using System;
+﻿using Models.CommonModels;
+using Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using WebApplication.Models.CommonModels;
-using WebApplication.Models.Enums;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace WebApplication.Models.ValueModels
+namespace Models.WebApplication.Controllers.ValuesModels
 {
     /// <summary>
     /// Creater: Wai Khai Sheng
     /// Created: 20211210
-    /// UpdatedBy:
-    /// Updated:
+    /// UpdatedBy: Wai Khai Sheng
+    /// Updated: 20211223
     /// </summary>
     public class ValueRes : ResponseBase
     {
         /// <summary>
         /// Creater: Wai Khai Sheng
         /// Created: 20211210
-        /// UpdatedBy:
-        /// Updated:
+        /// UpdatedBy: Wai Khai Sheng
+        /// Updated: 20211223
         /// </summary>
         public ValueRes() : base()
         {
@@ -28,8 +29,8 @@ namespace WebApplication.Models.ValueModels
         /// <summary>
         /// Creater: Wai Khai Sheng
         /// Created: 20211210
-        /// UpdatedBy:
-        /// Updated:
+        /// UpdatedBy: Wai Khai Sheng
+        /// Updated: 20211223
         /// </summary>
         /// <param name="statusCode"></param>
         /// <param name="statusDesc"></param>

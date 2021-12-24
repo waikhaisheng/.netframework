@@ -6,8 +6,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http.Filters;
-using WebApplication.Models.CommonModels;
-using WebApplication.Models.Enums;
+using Models.CommonModels;
+using Models.Enums;
 
 namespace WebApplication.Filters
 {

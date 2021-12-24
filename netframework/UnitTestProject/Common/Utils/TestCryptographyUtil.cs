@@ -104,6 +104,19 @@ namespace UnitTestProject.Common.Utils
         }
         /// <summary>
         /// Creater: Wai Khai Sheng
+        /// Created: 20211222
+        /// UpdatedBy:
+        /// Updated:
+        /// </summary>
+        [TestMethod]
+        public void TestHashString()
+        {
+            var str = "test123";
+            var ret = CryptographyUtil.HashString(str);
+            Assert.IsTrue(ret.Length > 0);
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
         /// Created: 20211206
         /// UpdatedBy:
         /// Updated: 

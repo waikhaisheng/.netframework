@@ -6,8 +6,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WebApplication.Filters;
-using WebApplication.Models.Enums;
-using WebApplication.Models.ValueModels;
+using Models.Enums;
+using Models.WebApplication.Controllers.ValuesModels;
 using System.Web.Http.Cors;//Microsoft.AspNet.WebApi.Cors
 
 namespace WebApplication.Controllers
@@ -25,6 +25,7 @@ namespace WebApplication.Controllers
     [RoutePrefix("api/value")]
     [ApiBaseActionFilter]
     [ApiUnhandledExceptionFilter]
+    [AllowAnonymous]
     public class ValueController : ApiController
     {
         /// <summary>
