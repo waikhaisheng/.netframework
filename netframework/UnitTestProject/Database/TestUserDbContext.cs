@@ -109,47 +109,6 @@ namespace UnitTestProject.Database
             var removeUsr = _dbContext.RemoveUser(usr.Id);
             Assert.IsTrue(removeUsr);
         }
-        [TestMethod]
-        public void TestParallelRequest_Add()
-        {
-            //var parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 10 };
-            //Parallel.For(0, 10, parallelOptions, i =>
-            //{
-            //    // Arrange
-            //    var config = new HttpConfiguration();
-            //    WebApiConfig.Register(config);
-            //    var server = new HttpServer(config);
-            //    var url = $"https://localhost/api/web/TestAddUser";
-            //    var httpMethod = HttpMethod.Post;
-            //    var httpClient = new HttpClient(server);
-            //    HttpStatusCode statusCode = HttpStatusCode.BadRequest;
-            //    var paramObj = new User
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        Email = $"test{DateTime.Now.Ticks}i{i}@gmail.com",
-            //        Password = $"test123{DateTime.Now.Ticks}i{i}",
-            //        Username = $"testusr{DateTime.Now.Ticks}i{i}"
-            //    };
-            //    // Act
-            //    using (var httpReqMsg = new HttpRequestMessage(httpMethod, url))
-            //    {
-            //        httpReqMsg.Content = new StringContent(JsonConvert.SerializeObject(paramObj), Encoding.UTF8, "application/json");
-
-            //        var response = httpClient.SendAsync(httpReqMsg).Result;
-
-            //        if (response.IsSuccessStatusCode)
-            //        {
-            //            var responseContent = response.Content.ReadAsStringAsync().Result;
-            //            var ret = JsonConvert.DeserializeObject(responseContent);
-            //            statusCode = response.StatusCode;
-            //            Assert.AreEqual(HttpStatusCode.OK, statusCode);
-            //        }
-            //        System.Diagnostics.Debug.WriteLine($"i: {i}, {response.IsSuccessStatusCode}");
-            //    }
-            //});
-            // Assert
-            Assert.AreEqual(1, 1);
-        }
         /// <summary>
         /// Creater: Wai Khai Sheng
         /// Created: 20211222
@@ -161,11 +120,6 @@ namespace UnitTestProject.Database
         {
             TestParallelRequest_Source_Add();
             TestParallelRequest_Source_Remove();
-        }
-        [TestMethod]
-        public void TestAddUser()
-        {
-
         }
         [TestMethod]
         public void TestRemoveUser()
