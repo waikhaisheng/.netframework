@@ -13,6 +13,9 @@ using System.Web.Http;
 using WebApplication.Filters;
 using Models.CommonModels;
 using Models.Enums;
+using Common.Tools;
+using Database.FileConfigs;
+using Common.Utils;
 
 namespace WebApplication.Controllers
 {
@@ -127,6 +130,20 @@ namespace WebApplication.Controllers
         public IHttpActionResult LoginAuthenticate()
         {
             var ret = new ResponseBase(ApiStatusEnum.OK, ApiStatusEnum.OK.GetEnumDescription());
+            return Ok(ret);
+        }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20220106
+        /// UpdatedBy:
+        /// Updated:
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetConfig")]
+        public IHttpActionResult GetConfig()
+        {
+            var ret = FileSystemWatcherConfig.DictConfigInstance?.ObjectData;
             return Ok(ret);
         }
     }

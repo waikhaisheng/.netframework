@@ -65,6 +65,7 @@
     <Compile Include="Utils\CryptographyUtil.cs" />
     <Compile Include="Utils\DatetimeUtil.cs" />
     <Compile Include="Utils\EncodingUtil.cs" />
+    <Compile Include="Utils\FileSystemWatcherUtil.cs" />
     <Compile Include="Utils\FileUtil.cs" />
   </ItemGroup>
   <ItemGroup>

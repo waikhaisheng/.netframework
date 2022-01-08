@@ -1,9 +1,9 @@
-# **.netframework**
+# **.netframework** 
 ## **netframework**
 > Console Application that to name the project
 
 ## **WebApplication**
-- To view Apis, `Nuget` install `Swashbuckle` for Open Api Swagger, then visit `https://localhost/swagger/ui/index` to view available apis.
+- To view Apis, `Nuget` install `Swashbuckle` for Open Api Swagger, then visits `https://localhost/swagger/ui/index` to view available apis.
 ![This is an image](/src/swaggerOpenApi.JPG)
 - Filters/Attributes
 - Exception
@@ -36,7 +36,7 @@
 
 ## **Common**
 - Utils
-  - On `CryptographyUtil.cs`, methods uses to encrypt or decrypt input string.
+  - On `CryptographyUtil.cs`, methods use to encrypt or decrypt input string. Asymmetric encryption. Symmetric encryption. Hash.
 
 <br />
 
@@ -63,3 +63,5 @@ console.log("javascript debug here")
 
 </p>
 </details>
+
+<small style="float:right;font-size: 12px;">Updated: 29 Dec 2021</small>

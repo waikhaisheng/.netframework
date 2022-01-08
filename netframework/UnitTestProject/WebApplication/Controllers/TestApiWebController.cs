@@ -24,6 +24,10 @@ using WebApplication.Controllers;
 using WebApplication.Filters;
 using Models.CommonModels;
 using Models.Enums;
+using Database.FileConfigs;
+using Common.Utils;
+using Moq.Protected;
+using System.Configuration;
 
 namespace UnitTestProject.WebApplication.Controllers
 {
@@ -48,6 +52,27 @@ namespace UnitTestProject.WebApplication.Controllers
             Password = $"test123{DateTime.Now.Ticks}",
             Username = $"TestApiWebController1"
         };
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20220106
+        /// UpdatedBy:
+        /// Updated:
+        /// </summary>
+        private HttpServer _server;
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20220106
+        /// UpdatedBy: Wai Khai Sheng
+        /// Updated: 20220108
+        /// </summary>
+        public TestApiWebController()
+        {
+            var config = new HttpConfiguration();
+            WebApiConfig.Register(config);
+            _server = new HttpServer(config);
+
+            new FileSystemWatcherConfig().SetupFileSystemWatcherConfig();
+        }
         /// <summary>
         /// Creater: Wai Khai Sheng
         /// Created: 20211210
@@ -89,14 +114,11 @@ namespace UnitTestProject.WebApplication.Controllers
         public void TestLoginAuthenticate_MissingJwtToken()
         {
             // Arrange
-            var ret = new ResponseBase();
-            var config = new HttpConfiguration();
-            WebApiConfig.Register(config);
-            var server = new HttpServer(config);
             var url = $"https://localhost/api/web/LoginAuthenticate";
             var httpMethod = HttpMethod.Get;
-            var httpClient = new HttpClient(server);
             HttpStatusCode statusCode = HttpStatusCode.BadRequest;
+            var ret = new ResponseBase();
+            var httpClient = new HttpClient(_server);
 
             // Act
             using (var httpReqMsg = new HttpRequestMessage(httpMethod, url))
@@ -139,14 +161,11 @@ namespace UnitTestProject.WebApplication.Controllers
             var jwt = Login();
 
             // Arrange
+            var httpClient = new HttpClient(_server);
             HttpStatusCode statusCode = HttpStatusCode.BadRequest;
             var url = $"https://localhost/api/web/LoginAuthenticate";
             var httpMethod = HttpMethod.Get;
             var ret = new LoginRes();
-            var config = new HttpConfiguration();
-            WebApiConfig.Register(config);
-            var server = new HttpServer(config);
-            var httpClient = new HttpClient(server);
 
             // Act
             using (var httpReqMsg = new HttpRequestMessage(httpMethod, url))
@@ -166,6 +185,36 @@ namespace UnitTestProject.WebApplication.Controllers
             Assert.AreEqual(ApiStatusEnum.OK, ret.StatusCode);
             Assert.AreEqual(ApiStatusEnum.OK.GetEnumDescription(), ret.StatusDesc);
         }
+        /// <summary>
+        /// Creater: Wai Khai Sheng
+        /// Created: 20220106
+        /// UpdatedBy:
+        /// Updated:
+        /// </summary>
+        [TestMethod]
+        public void TestGetConfig()
+        {
+            var httpClient = new HttpClient(_server);
+            HttpStatusCode statusCode = HttpStatusCode.BadRequest;
+            var url = $"https://localhost/api/web/GetConfig";
+            var httpMethod = HttpMethod.Get;
+            var ret = new Dictionary<string, string>();
+
+            // Act
+            using (var httpReqMsg = new HttpRequestMessage(httpMethod, url))
+            {
+                var response = httpClient.SendAsync(httpReqMsg).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content.ReadAsStringAsync().Result;
+                    ret = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseContent);
+                    statusCode = response.StatusCode;
+                }
+            }
+            // Assert 
+            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            Assert.AreEqual("value1", ret["key1"]);
+        }
 
         #region Private Testcase
         /// <summary>
@@ -177,13 +226,10 @@ namespace UnitTestProject.WebApplication.Controllers
         private void TestAddUser()
         {
             // Arrange
-            var config = new HttpConfiguration();
-            WebApiConfig.Register(config);
-            var server = new HttpServer(config);
             var url = $"https://localhost/api/web/AddUser";
             var httpMethod = HttpMethod.Post;
-            var httpClient = new HttpClient(server);
             HttpStatusCode statusCode = HttpStatusCode.BadRequest;
+            var httpClient = new HttpClient(_server);
 
             // Act
             using (var httpReqMsg = new HttpRequestMessage(httpMethod, url))
@@ -210,13 +256,10 @@ namespace UnitTestProject.WebApplication.Controllers
         private void TestRemoveUser()
         {
             // Arrange
-            var config = new HttpConfiguration();
-            WebApiConfig.Register(config);
-            var server = new HttpServer(config);
             var url = $"https://localhost/api/web/RemoveUser";
             var httpMethod = HttpMethod.Post;
-            var httpClient = new HttpClient(server);
             HttpStatusCode statusCode = HttpStatusCode.BadRequest;
+            var httpClient = new HttpClient(_server);
 
             // Act
             using (var httpReqMsg = new HttpRequestMessage(httpMethod, url))
@@ -249,11 +292,8 @@ namespace UnitTestProject.WebApplication.Controllers
             var url = $"https://localhost/api/web/Login";
             var httpMethod = HttpMethod.Post;
             var ret = new LoginRes();
-            var config = new HttpConfiguration();
-            WebApiConfig.Register(config);
-            var server = new HttpServer(config);
-            var httpClient = new HttpClient(server);
             var jwt = string.Empty;
+            var httpClient = new HttpClient(_server);
 
             // Act
             using (var httpReqMsg = new HttpRequestMessage(httpMethod, url))
